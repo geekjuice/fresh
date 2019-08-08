@@ -2,13 +2,11 @@
 
 > fresh dependencies
 
-
 ## install
 
 ```
 $ npm install --global @geekjuice/fresh
 ```
-
 
 ## usage
 
@@ -26,6 +24,6 @@ $ fresh --help
 
 ```
 
-
 ## license
+
 [mit](license.md)

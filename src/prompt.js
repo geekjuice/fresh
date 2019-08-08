@@ -68,7 +68,7 @@ module.exports = async (packages, { wanted, latest, force }) => {
   }
 
   if (!confirm) {
-    throw new Exception();
+    throw Exception();
   }
 
   return changes;

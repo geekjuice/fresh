@@ -1,9 +1,8 @@
-MAKEFLAGS = -j1
-
-JS = "**/*.js"
 INDEX = "index.js"
+ESLINT_FILES = "**/*.js"
+PRETTIER_FILES = "**/*.{js,json,md}"
 
-DONE = echo ✓ $@ done
+DONE = echo [fresh] ✓ $@ done
 
 .PHONY: default \
 	clean \
@@ -39,11 +38,11 @@ outdated:
 	$(DONE)
 
 lint:
-	npm run eslint -- $(JS)
+	npm run eslint -- $(ESLINT_FILES)
 	$(DONE)
 
 format:
-	npm run prettier -- $(JS)
+	npm run prettier -- --write $(PRETTIER_FILES)
 	$(DONE)
 
 test:

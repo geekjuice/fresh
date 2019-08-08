@@ -3,25 +3,24 @@ const Exception = require('./exception');
 
 const cwd = process.cwd();
 
+const parse = json => {
+  try {
+    return JSON.parse(json);
+  } catch (err) {
+    return null;
+  }
+};
+
 module.exports = async () => {
   try {
-    await exec(`npm outdated`, { cwd });
+    await exec(`npm outdated --json`, { cwd });
   } catch ({ stdout }) {
-    if (!stdout || !/^package/i.test(stdout)) {
-      throw new Exception();
+    const outdated = parse(stdout);
+
+    if (!stdout || outdated === null) {
+      throw Exception();
     }
 
-    const [, ...lines] = stdout.split('\n').filter(Boolean);
-    return lines.reduce((memo, line) => {
-      const [name, current, wanted, latest] = line.split(/\s+/g);
-      return {
-        ...memo,
-        [name]: {
-          current,
-          wanted,
-          latest,
-        },
-      };
-    }, {});
+    return outdated;
   }
 };
