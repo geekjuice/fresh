@@ -10,9 +10,13 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10"
   },
   "main": "index.js",
+  "files": [
+    "lib",
+    "index.js"
+  ],
   "bin": {
     "fresh": "index.js"
   },
@@ -28,25 +32,32 @@
     "cli"
   ],
   "dependencies": {
-    "chalk": "2.4.2",
-    "debug": "4.1.1",
-    "inquirer": "6.5.0",
-    "meow": "5.0.0",
-    "ora": "3.4.0"
+    "chalk": "^4.0.0",
+    "meow": "^6.1.0",
+    "ora": "^4.0.3",
+    "prompts": "^2.3.2",
+    "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "babel-eslint": "10.0.2",
-    "eslint": "6.1.0",
-    "eslint-config-prettier": "6.0.0",
-    "eslint-plugin-node": "9.1.0",
-    "husky": "3.0.3",
-    "jest": "24.8.0",
-    "lint-staged": "9.2.1",
-    "prettier": "1.18.2"
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.9.8",
+    "@types/prompts": "^2.0.5",
+    "@types/text-table": "^0.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "husky": "^4.2.3",
+    "jest": "^25.2.4",
+    "lint-staged": "^10.1.0",
+    "prettier": "^2.0.2",
+    "ts-jest": "^25.3.1",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "eslint": "eslint",
     "jest": "jest",
-    "prettier": "prettier"
+    "prettier": "prettier",
+    "tsc": "tsc"
   }
 }
