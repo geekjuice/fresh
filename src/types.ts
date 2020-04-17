@@ -1,4 +1,5 @@
 export interface Flags {
+  global: boolean;
   wanted: boolean;
   latest: boolean;
   exact: boolean;

@@ -11,11 +11,11 @@ import { Flags } from './types';
 const cwd = process.cwd();
 const filepath = join(cwd, 'package.json');
 
-export default async ({ exact, ...flags }: Flags): Promise<void> => {
+export default async ({ exact, global, ...flags }: Flags): Promise<void> => {
   const progress = ora('fetching outdated modules...').start();
 
   try {
-    const packages = await outdated();
+    const packages = await outdated(global);
     progress.stop();
 
     if (Object.keys(packages).length > 0) {

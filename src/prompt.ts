@@ -18,7 +18,7 @@ const option = (name: string, value: string): Choice => ({
 
 export default async (
   outdated: Outdated,
-  { wanted, latest, force }: Omit<Flags, 'exact'>
+  { wanted, latest, force }: Omit<Flags, 'exact' | 'global'>
 ): Promise<Dependencies> => {
   const packages = Object.entries(outdated);
 

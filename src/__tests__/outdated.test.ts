@@ -46,4 +46,20 @@ describe('outdated', () => {
     const actual = outdated();
     await expect(actual).rejects.toBeInstanceOf(Error);
   });
+
+  test('global packages', async () => {
+    run.mockResolvedValue({ stdout: '', stderr: '' });
+
+    await outdated(false);
+    expect(run).toHaveBeenCalledWith(
+      'npm outdated --json',
+      expect.objectContaining({ cwd: expect.any(String) })
+    );
+
+    await outdated(true);
+    expect(run).toHaveBeenCalledWith(
+      'npm outdated --json --global',
+      expect.objectContaining({ cwd: expect.any(String) })
+    );
+  });
 });

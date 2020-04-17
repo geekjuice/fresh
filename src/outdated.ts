@@ -12,10 +12,15 @@ const parse = (results: string): Outdated | null => {
   }
 };
 
-export default async (): Promise<Outdated> => {
+export default async (global = false): Promise<Outdated> => {
   try {
-    const { stdout } = await run(`npm outdated --json`, { cwd });
+    const command = ['npm outdated --json', global ? '--global' : '']
+      .filter(Boolean)
+      .join(' ');
+
+    const { stdout } = await run(command, { cwd });
     const outdated = parse(stdout);
+
     return outdated || {};
   } catch ({ stdout }) {
     const outdated = parse(stdout);

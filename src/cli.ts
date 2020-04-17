@@ -13,13 +13,18 @@ const cli = meow(
   usage: ${magenta('fresh')} [options]
 
   options:
+    ${blue('--global')}   check global packages
     ${blue('--wanted')}   use wanted versions
     ${blue('--latest')}   use latest versions
+    ${blue('--exact')}    use exact versions
     ${blue('--force')}    skip confirmation
 
 `,
   {
     flags: {
+      global: {
+        type: 'boolean',
+      },
       wanted: {
         type: 'boolean',
       },
