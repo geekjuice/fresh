@@ -1,6 +1,8 @@
 import * as utils from './utils';
 
-export const read = async (filepath: string): Promise<{}> => {
+export const read = async (
+  filepath: string
+): Promise<Record<string, unknown>> => {
   const stuff = await utils.read(filepath);
   return JSON.parse(stuff.toString());
 };

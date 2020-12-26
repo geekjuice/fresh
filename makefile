@@ -25,18 +25,17 @@ wipe: clean
 .PHONY: install
 install: wipe
 	npm install
+	npm audit fix
 	$(DONE)
 
-.PHONY: lint
-lint:
-	npm run eslint -- \
-		$(ESLINT_FILES)
+.PHONY: check
+check:
+	npm run check
 	$(DONE)
 
-.PHONY: format
-format:
-	npm run prettier -- \
-		--write $(PRETTIER_FILES)
+.PHONY: fix
+fix:
+	npm run fix
 	$(DONE)
 
 .PHONY: test

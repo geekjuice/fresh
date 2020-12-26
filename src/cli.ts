@@ -1,3 +1,5 @@
+/* eslint-disable no-process-exit */
+
 import { blue, magenta, red } from 'chalk';
 import meow from 'meow';
 import { Exception } from './exception';
@@ -6,7 +8,7 @@ import main from './main';
 import precondition from './precondition';
 import { Flags } from './types';
 
-const { flags } = meow(
+const cli = meow(
   `
   usage: ${magenta('fresh')} [options]
 
@@ -34,10 +36,12 @@ const { flags } = meow(
   }
 );
 
+const flags = cli.flags as Flags;
+
 (async (): Promise<void> => {
   try {
     precondition(flags);
-    await main(flags as Flags);
+    await main(flags);
   } catch (error) {
     console.log(pad.top(red('(╯°□°）╯︵ ┻━┻')));
     if (error instanceof Exception) {

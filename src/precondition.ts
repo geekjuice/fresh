@@ -1,11 +1,7 @@
 import Exception from './exception';
+import { Flags } from './types';
 
-interface PreconditionParameters {
-  wanted: boolean;
-  latest: boolean;
-}
-
-export default ({ wanted, latest }: PreconditionParameters): void => {
+export default ({ wanted, latest }: Partial<Flags>): void => {
   if (wanted && latest) {
     throw Exception('cannot use both wanted and latest...');
   }

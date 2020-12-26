@@ -14,8 +14,9 @@ const parse = (results: string): Outdated | null => {
 
 export default async (): Promise<Outdated> => {
   try {
-    await run(`npm outdated --json`, { cwd });
-    return {};
+    const { stdout } = await run(`npm outdated --json`, { cwd });
+    const outdated = parse(stdout);
+    return outdated || {};
   } catch ({ stdout }) {
     const outdated = parse(stdout);
 
